@@ -1,5 +1,5 @@
 "use strict";
-
+let a = 4;
 let some = ['n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's'];
 
 
