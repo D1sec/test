@@ -1,6 +1,18 @@
 "use strict";
 
-let numberOfFilms = prompt("how many films have you already watched?", "0");
+let numberOfFilms;
+
+
+
+function start() {
+    numberOfFilms = +prompt("how many films have you already watched?", "0");
+    
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt("how many films have you already watched?", "0");
+    }
+}
+
+start();
 
 let personalMovieDb = {
     count: numberOfFilms,
@@ -10,20 +22,43 @@ let personalMovieDb = {
     privat: false
 };
 
-const a = prompt("last watched film?", ""),
-      b = prompt("how u gonna score it?", "0");
 
 
-for(let i = 0; i<3; i++) {
-    personalMovieDb.movies[a] = b;
+function reremberMyFilms() {
 
-    if (a == '') continue; else if (a.length> 50) continue;
-
+    for(let i = 0; i<2; i++) {
+        const a = prompt("last watched film?", ""),
+              b = prompt("how u gonna score it?", "0");
+        personalMovieDb.movies[a] = b;
+    
+    
+        if (a == '') continue; else if (a.length > 50) continue;
+    
+    }
 }
 
-(personalMovieDb.count<10) ? alert("you'are poor as fuck") : (personalMovieDb<30) ? alert('That"s about alright') : (personalMovieDb>29) ? alert("Bruh that's too much") : alert("You are fuking chicher");
-
-personalMovieDb.movies[prompt("lasts watched film?", "")] = prompt("how us gonna score it?", "0");
+reremberMyFilms();
 
 
-console.log(personalMovieDb);
+
+function fagDetection() {
+    (personalMovieDb.count<10) ? console.log('you are poor as fuck') : (personalMovieDb.count<30) ? console.log('That"s about alright') : (personalMovieDb>29) ? console.log("Bruh that's too much") : console.log("You are fuking chicher");
+}
+
+fagDetection();
+
+function showMyDB () {
+    if (!(personalMovieDb.privat)) console.log(personalMovieDb);
+}
+
+showMyDB();
+
+function writeYourGenres () {
+    for (let i=1; i<4; i++) {
+        personalMovieDb.genres[i-1] = prompt(`your favourite genre under position ${i}`);
+    }
+}
+
+writeYourGenres();
+
+showMyDB();
